@@ -1,0 +1,1 @@
+web: gunicorn flight_fare_prediction.wsgi

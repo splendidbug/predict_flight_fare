@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flight fare prediction</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'fare_pred_app/css/opensans-font.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'fare_pred_app/fonts/line-awesome/css/line-awesome.min.css' %}">
+	<!-- Jquery -->
+	<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'fare_pred_app/css/style.css' %}"/>
+</head>
+<body class="form-v4">
+
+	<div class="page-content">
+		<div class="form-v4-content">
+			<div class="form-left">
+				<h2>Information</h2>
+				<p class="text-1"><br>Please enter your name and age.</p>
+				<p class="text-2"><br><br><br><br><br><br><br>Please enter the departure date and time in required format</p>
+				<p class="text-2"><br><br><br><br><br>Please enter the arrival date and time in required format</p>
+				
+			</div>
+			<form class="form-detail" action="#" method="post" id="myform" >
+				{% csrf_token %}
+				<h2>Flight Information</h2>
+				<div class="form-group">
+                    <br><br>
+					<div class="form-row form-row-1">
+						<label for="first_name">Name</label>
+						<input type="text" name="first_name" id="first_name" class="input-text">
+					</div>
+					<br>
+					<div class="form-row form-row-1">
+						<label for="age">Age</label>
+						<input type="text" name="age" id="age" class="input-text">
+					</div>
+
+    			</div>
+				<label for="sex">Sex:</label>
+				<div class="form-group">
+						<label for="male" class="sex">Male</label>
+						
+						<div class="form-row form-row-1">	
+							<input type="radio" id="male" name="sex" value="male">
+						</div>	
+						
+						<label for="female">Female</label>
+						
+						<div class="form-row form-row-1">
+							<input type="radio" id="female" name="sex" value="female">
+						</div>
+					
+				</div>
+                <br><br>
+                
+				<div class="form-group">
+                    <br><br>
+					<div class="form-row form-row-1">
+						<label for="dep_date">Departure date</label>
+						<input type="text" name="dep_date" id="dep_date" class="input-text" placeholder="dd/mm/yy" >
+					</div>
+					<br>
+					<div class="form-row form-row-1">
+						<label for="dep_time">Departure Time</label>
+						<input type="text" name="dep_time" id="dep_time" class="input-text" placeholder="hh:mm">
+					</div>
+
+    			</div>
+                
+				<label for="source">Source</label>
+  				<select name="source" id="source">
+    					<option value="na">--Select one--</option>
+    					<option value="Delhi">Delhi</option>
+    					<option value="Kolkata">Kolkata</option>
+    					<option value="Banglore">Banglore</option>
+					<option value="Mumbai">Mumbai</option>    
+					<option value="Chennai">Chennai</option>    
+                </select>
+                <br><br> 
+
+				<div class="form-group">
+                    <br><br>
+					<div class="form-row form-row-1">
+						<label for="arr_date">Arrival date</label>
+						<input type="text" name="arr_date" id="arr_date" class="input-text" placeholder="dd/mm/yy" >
+					</div>
+					<br>
+					<div class="form-row form-row-1">
+						<label for="arr_time">Arrival Time</label>
+						<input type="text" name="arr_time" id="arr_time" class="input-text" placeholder="hh:mm" >
+					</div>
+
+    			</div>
+
+
+                
+                
+				<label for="des">Destination</label>
+  				<select name="des" id="des">
+    					<option value="na">--Select one--</option>
+    					<option value="Cochin">Cochin</option>
+    					<option value="Banglore">Banglore</option>
+    					<option value="Delhi">Delhi</option>
+					<option value="New Delhi">New Delhi</option>    
+					<option value="Hyderabad">Hyderabad</option>    
+					<option value="Kolkata">Kolkata</option>    
+
+  				</select>
+				    <br>    <br>
+				<div class="form-row">
+					<label for="stoppage">Number of stoppages</label>
+					<input type="number" name="stoppage" id="stoppage" class="input-text">
+				</div>
+  				
+				<label for="airline">Airline</label>
+  				<select name="airline" id="airline">
+    					<option value="na">--Select one--</option>
+    					<option value="Air Asia">Air Asia</option>
+    					<option value="Air India">Air India</option>
+    					<option value="GoAir">GoAir</option>
+					<option value="IndiGo">IndiGo</option>    
+					<option value="SpiceJet">SpiceJet</option>    
+					<option value="Vistara">Vistara</option>    
+					<option value="Multiple carriers">Other</option>    
+
+  				</select>
+
+				<br><br>
+
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Next" onclick="next()" 
+
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+	
+	<script>
+
+form=document.getElementById("myform");
+
+
+function next() {
+    form.action="/ticket/";
+    form.submit();
+}
+
+		
+	</script>
+
+</body>
+</html>
